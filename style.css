@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sana", sans-serif;
+}
+
+body{
+    background-color: white;
+    height: 100vh;
+    text-align: center;
+}
+
+.interface{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+header{
+    padding: 110px 4%;
+    color: white;   
+    background-image: linear-gradient(black, transparent);
+}
+
+.Titulo{
+    font-size: 23px;
+}
+
+
+
