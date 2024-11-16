@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<!-- Parte do titulo -->
 <body>
     <header>
         <div class="interface">
@@ -21,11 +22,23 @@
     
 </body>
 
+
 <main>
-    <div class="topo">
-        <div class="interface"> 
-              
+    <div class="topo-interface">
+        <div class="Opções"> <!-- Opções de rotas -->
+              <select id="ponto1"></select>
+              <select id="ponto2"></select>
+              <select id="ponto3"></select>
+              <select id="ponto4"></select>
         </div>
+
+        <div class="Calcular"> <!-- Botão pra calcular a rota -->
+            <button onclick="CalcularRota()">Calcular Rota</button>
+        </div>
+    </div>
+    <!-- Grafo -->
+    <div class="Mapa">
+        <canvas id="mapaCanvas" width="800" height="600"></canvas>
     </div>
 </main>
 </html>
