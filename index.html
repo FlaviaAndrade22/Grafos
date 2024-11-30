@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/Slide.js" defer></script>
 </head>
 
 <!-- Parte do titulo -->
@@ -25,45 +26,32 @@
 
 <main>
     <!-- Slides -->
-    <div class="slide-interface">
-        <div class="slider">
-            <div class="slides">
-                <input type="radio" nome="radio-btn" id="radio1">
-                <input type="radio" nome="radio-btn" id="radio2">
-                <input type="radio" nome="radio-btn" id="radio3">
-                
-                <!-- imagens -->
-                <div class="slide first">
-                    <img src="img/cat_kitty meme.jpeg" alt="Image 1" />
-                </div>
-                <div class="slide">
-                    <img src="img/download.jpeg" alt="Image 2"/>
-                </div>
-                <div class="slide">
-                    <img src="img/Meme.jpeg" alt="Image 3" />
-                </div>
+    <div class="conteiner-slider">
+        <button id="prev-button"><img src="./public/images/arrow.png" alt="prev-button"></button>
+        <div class="conteiner-images">
 
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-                </div>
-            </div>
-            <div class="manual-navigation">
-                <label for="radio1" class="manual-btn"></label>
-                <label for="radio2" class="manual-btn"></label>
-                <label for="radio3" class="manual-btn"></label>
-            </div>
+            <img src="./public/images/download.jpeg" alt="Image" class="slider on"/>
+            <img src="./public/images/cat_kitty meme.jpeg" alt="Image" class="slider"/>
+            <img src="./public/images/Meme.jpeg" alt="Image" class="slider" />
+
         </div>
+        <button id="next-button"><img src="./public/images/arrow.png" alt="next-button"></button>
     </div>
 
     <!-- Mapa e opções -->
     <div class="mapa-interface">
         <div class="Opções"> <!-- Opções de rotas -->
-              <select id="ponto1"></select>
-              <select id="ponto2"></select>
-              <select id="ponto3"></select>
-              <select id="ponto4"></select>
+                <label for="ponto1">Ponto 1:</label>
+                <select id="ponto1"></select>
+
+                <label for="ponto2">Ponto 2:</label>
+                <select id="ponto2"></select>
+
+                <label for="ponto3">Ponto 3:</label>
+                <select id="ponto3"></select>
+
+                <label for="ponto4">Ponto 4:</label>
+                <select id="ponto4"></select>
         </div>
 
         <div class="Calcular"> <!-- Botão pra calcular a rota -->
