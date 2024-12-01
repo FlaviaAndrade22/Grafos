@@ -1,62 +1,67 @@
-// Grafo representado por um objeto de adjacência
-class Grafo {
-    constructor() {
-        this.grafo = {};
-    }
+// Atualização das posições dos pontos para o novo tamanho do canvas
+const posicoes = {
+  Distribuidora: { x: 100, y: 100 }, // Ponto principal destacado
+  Mercado1: { x: 150, y: 500 },
+  Mercado2: { x: 650, y: 400 },
+  Mercado3: { x: 700, y: 150 },
+  Mercado4: { x: 450, y: 100 },
+  Mercado5: { x: 300, y: 250 },
+  A: { x: 200, y: 100 },
+  B: { x: 200, y: 200 },
+  C: { x: 100, y: 200 },
+  D: { x: 100, y: 300 },
+  E: { x: 200, y: 300 },
+  F: { x: 200, y: 400 },
+  G: { x: 100, y: 400 },
+  H: { x: 300, y: 400 },
+  I: { x: 300, y: 500 },
+  J: { x: 200, y: 500 },
+  K: { x: 400, y: 500 },
+  L: { x: 300, y: 300 },
+  M: { x: 300, y: 200 },
+  N: { x: 300, y: 100 },
+  O: { x: 400, y: 400 },
+  P: { x: 400, y: 300 },
+  Q: { x: 400, y: 200 },
+  R: { x: 400, y: 100 },
+  S: { x: 500, y: 400 },
+  T: { x: 500, y: 300 },
+  U: { x: 500, y: 200 },
+  V: { x: 500, y: 100 },
+  W: { x: 600, y: 200 },
+  X: { x: 600, y: 300 },
+  Y: { x: 600, y: 400 },
+  Z: { x: 600, y: 500 },
 
-    adicionarVertice(v) {
-        if (!this.grafo[v]) {
-            this.grafo[v] = [];
-        }
-    }
-
-    adicionarAresta(v1, v2, peso) {
-        this.adicionarVertice(v1);
-        this.adicionarVertice(v2);
-        this.grafo[v1].push({ vertice: v2, peso: peso });
-        this.grafo[v2].push({ vertice: v1, peso: peso }); // Para grafos não direcionados
-    }
-
-    // Algoritmo de Dijkstra
-    dijkstra(origem, destino) {
-        const distancias = {};
-        const prev = {};
-        const pq = new PriorityQueue();
-
-        // Inicializando as distâncias com infinito
-        for (let vertice in this.grafo) {
-            distancias[vertice] = Infinity;
-            prev[vertice] = null;
-        }
-
-        // Grafo de exemplo com distâncias entre os pontos
-const grafo = {
-  A: { B: 5, C: 10, E: 8 },
-  B: { A: 5, C: 3, D: 9, F: 7 },
-  C: { A: 10, B: 3, D: 2, G: 6 },
-  D: { B: 9, C: 2, G: 4, H: 8 },
-  E: { A: 8, F: 6, I: 10 },
-  F: { B: 7, E: 6, G: 5, J: 9 },
-  G: { C: 6, D: 4, F: 5, H: 3 },
-  H: { D: 8, G: 3, K: 6 },
-  I: { E: 10, J: 7 },
-  J: { F: 9, I: 7, K: 4 },
-  K: { H: 6, J: 4 }
 };
 
-// Coordenadas dos nós para o canvas
-const posicoes = {
-  A: { x: 100, y: 100 },
-  B: { x: 200, y: 200 },
-  C: { x: 400, y: 150 },
-  D: { x: 600, y: 300 },
-  E: { x: 150, y: 350 },
-  F: { x: 300, y: 400 },
-  G: { x: 500, y: 400 },
-  H: { x: 700, y: 500 },
-  I: { x: 50, y: 500 },
-  J: { x: 250, y: 550 },
-  K: { x: 600, y: 600 }
+// Grafo atualizado com os novos pontos
+const grafo = {
+  Distribuidora: { A: 5 },
+  Mercado1: { J: 3 },
+  Mercado2: { },
+  Mercado3: {  },
+  Mercado4: { R: 3, V: 5 },
+  Mercado5: { L: 3, M: 3 },
+  A: { B: 5, N: 5 },
+  B: { A: 5, C: 5, E: 5, M: 5 },
+  C: { B: 5, D: 5 },
+  D: { C: 5, G: 5, E: 5 },
+  E: { B: 5, F: 6, },
+  F: { B: 5, E: 5, G: 5, J: 5 },
+  G: { D: 5, F: 5 },
+  H: { F: 5, I: 5 },
+  I: { J: 5, H: 5 },
+  J: { I: 5, F: 5, Mercado1: 3},
+  K: { I: 5, O: 5 },
+  L: { E: 5, M: 5, P:5},
+  M: { B: 5, N: 4, Mercado5: 3},
+  N: { A: 5, M: 5, R: 5},
+  O: { H: 5, K: 5, S: 5},
+  P: { L: 5, O: 5, T: 5},
+  Q: { R: 5, U: 5},
+  R: { Mercado4: 3, N: 5, Q: 5},
+  S: { O: 5, T: 5, Y: 5}
 };
 
 // Preenche os menus suspensos com os nós do grafo
@@ -75,14 +80,170 @@ function inicializarSelects() {
   });
 }
 
-// Desenha o grafo no canvas
+
+
+// Função para desenhar o mapa ampliado
+function desenharMapaCidade(ctx) {
+  // Desenhar ruas principais (linhas horizontais e verticais)
+  ctx.strokeStyle = "#ccc";
+  ctx.lineWidth = 2;
+
+// Linhas horizontais
+for (let y = 100; y <= 500; y += 100) {
+  ctx.beginPath();
+  ctx.moveTo(50, y);
+  ctx.lineTo(750, y);
+  ctx.stroke();
+}
+
+// Linhas verticais
+for (let x = 100; x <= 700; x += 100) {
+  ctx.beginPath();
+  ctx.moveTo(x, 50);
+  ctx.lineTo(x, 550);
+  ctx.stroke();
+}
+
+  // pontos de comércio
+  {
+    ctx.fillStyle = "#ffcc00";  
+    ctx.fillRect(50, 70, 60, 20); // Distribuidora
+    ctx.fillRect(170, 50, 20, 40);
+    ctx.fillRect(110, 70, 70, 20);                                 
+    ctx.fillRect(160, 110, 30, 30);
+    ctx.fillRect(50, 110, 50, 80); 
+    ctx.fillRect(170, 140, 20, 50); 
+    ctx.fillRect(100, 170, 70, 20); 
+    }
+
+    // Mercados
+    {
+      ctx.fillStyle = "#00ff00";
+      ctx.fillRect(310, 210, 50, 80);
+      ctx.fillRect(110, 510, 80, 50);
+    }
+
+    // Parques
+    {
+      ctx.fillStyle = "#008000"
+      ctx.fillRect(110, 210, 80, 80);
+      ctx.fillRect(410, 110, 180, 80);
+      ctx.fillRect(440, 410, 120, 90)
+    }
+
+    // Prédios
+    {
+    ctx.fillStyle = "#aaa";
+    ctx.fillRect(60, 240, 30, 50); // Bloco 1
+    ctx.fillRect(70, 200, 20, 30); 
+    ctx.fillRect(70, 300, 20, 30); 
+    ctx.fillRect(60, 340, 30, 30);
+    ctx.fillRect(70, 380, 20, 40);
+    ctx.fillRect(70, 430, 35, 60);
+    ctx.fillRect(70, 510, 35, 40);
+    
+    {
+    ctx.fillRect(110, 310, 10, 20); // Bloco 2
+    ctx.fillRect(110, 340, 20, 20); 
+    ctx.fillRect(110, 370, 20, 20); 
+    ctx.fillRect(140, 370, 50, 20); 
+    ctx.fillRect(130, 310, 30, 20);
+    ctx.fillRect(170, 310, 20, 20); 
+    ctx.fillRect(170, 340, 20, 20); 
+    ctx.fillRect(110, 410, 50, 50); 
+    ctx.fillRect(110, 470, 20, 20); 
+    ctx.fillRect(140, 470, 50, 20); 
+    ctx.fillRect(170, 410, 20, 50); 
+    }
+
+    {
+    ctx.fillRect(210, 210, 60, 20); // Bloco 3
+    ctx.fillRect(260, 210, 25, 80);
+    ctx.fillRect(210, 270, 60, 20); 
+    ctx.fillRect(210, 110, 35, 35); 
+    ctx.fillRect(255, 110, 35, 35); 
+    ctx.fillRect(210, 155, 35, 35); 
+    ctx.fillRect(255, 155, 35, 35);
+    }
+
+    {
+    ctx.fillRect(210, 370, 60, 20); // Bloco 4
+    ctx.fillRect(210, 340, 20, 20); 
+    ctx.fillRect(210, 320, 50, 40); 
+    ctx.fillRect(290, 370, 50, 20); 
+    ctx.fillRect(210, 510, 80, 20);
+    ctx.fillRect(270, 310, 20, 20); 
+    ctx.fillRect(300, 310, 50, 40);
+    ctx.fillRect(360, 310, 30, 80);
+    ctx.fillRect(210, 410, 10, 20); 
+    ctx.fillRect(210, 440, 20, 20); 
+    ctx.fillRect(210, 470, 20, 20); 
+    ctx.fillRect(240, 440, 50, 50); 
+    ctx.fillRect(230, 410, 30, 20);
+    ctx.fillRect(270, 410, 20, 20); 
+    }
+
+    {
+    ctx.fillRect(310, 410, 80, 80); // Bloco 5
+    ctx.fillRect(310, 510, 20, 20); 
+    ctx.fillRect(340, 510, 50, 30); 
+    ctx.fillRect(310, 110, 50, 40); 
+    ctx.fillRect(310, 160, 30, 40);
+    ctx.fillRect(370, 110, 20, 60);
+    ctx.fillRect(370, 180, 20, 60);
+    ctx.fillRect(370, 250, 60, 40);
+    ctx.fillRect(410, 210, 50, 30);
+    ctx.fillRect(470, 210, 20, 80);
+    ctx.fillRect(310, 70, 80, 20);
+    ctx.fillRect(210, 70, 80, 20);
+    }
+
+    {                                         
+    ctx.fillRect(410, 410, 25, 50); // Bloco 6
+    ctx.fillRect(410, 470, 25, 70); 
+    ctx.fillRect(410, 505, 180, 45); 
+    ctx.fillRect(565, 410, 25, 50);
+    ctx.fillRect(565, 470, 25, 70);
+    }
+
+    {
+      ctx.fillRect()
+    }
+     }
+
+  // Desenhar ponto da distribuidora
+  ctx.fillStyle = "#ff0000";
+  ctx.beginPath();
+  ctx.arc(posicoes.Distribuidora.x, posicoes.Distribuidora.y, 15, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = "#000";
+  ctx.fillText("Distribuidora", posicoes.Distribuidora.x - 40, posicoes.Distribuidora.y - 20);
+
+  // Desenhar mercados
+  ctx.fillStyle = "#00ff00";
+  for (let mercado in posicoes) {
+    if (mercado !== "Distribuidora") {
+      ctx.beginPath();
+      ctx.arc(posicoes[mercado].x, posicoes[mercado].y, 10, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.fillStyle = "#000";
+      ctx.fillText(mercado, posicoes[mercado].x - 30, posicoes[mercado].y - 15);
+    }
+  }
+}
+
+// Atualização da função desenharMapa
 function desenharMapa() {
-  const canvas = document.getElementById('mapCanvas');
+  const canvas = document.getElementById('mapaCanvas');
   const ctx = canvas.getContext('2d');
 
+  // Limpar o canvas antes de redesenhar
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Desenhar as conexões
+  // Desenhar o mapa da cidade
+  desenharMapaCidade(ctx);
+
+  // Desenhar o grafo
   for (let no in grafo) {
     for (let vizinho in grafo[no]) {
       ctx.beginPath();
@@ -96,17 +257,8 @@ function desenharMapa() {
       ctx.fillText(grafo[no][vizinho], midX, midY);
     }
   }
-
-  // Desenhar os pontos
-  for (let no in posicoes) {
-    ctx.beginPath();
-    ctx.arc(posicoes[no].x, posicoes[no].y, 10, 0, 2 * Math.PI);
-    ctx.fillStyle = "#ff0000";
-    ctx.fill();
-    ctx.fillStyle = "#000";
-    ctx.fillText(no, posicoes[no].x - 5, posicoes[no].y - 15);
-  }
 }
+
 
 // Algoritmo de Dijkstra para encontrar a menor rota entre dois nós
 function menorRota(grafo, inicio, fim) {
@@ -154,7 +306,7 @@ function calcularRotaSelecionada() {
   for (let i = 0; i < pontos.length - 1; i++) {
     const caminho = menorRota(grafo, pontos[i], pontos[i + 1]);
     if (!caminho) {
-      console.log(Caminho não encontrado entre ${pontos[i]} e ${pontos[i + 1]}.);
+      console.log(`Caminho não encontrado entre ${pontos[i]} e ${pontos[i + 1]}.`);
       return;
     }
     if (rotaCompleta.length > 0) caminho.shift();
@@ -165,13 +317,13 @@ function calcularRotaSelecionada() {
     }
   }
 
-  console.log(Rota: ${rotaCompleta.join(' -> ')} | Distância Total: ${distanciaTotal});
+  console.log(`Rota: ${rotaCompleta.join(' -> ')} | Distância Total: ${distanciaTotal}`);
   desenharRota(rotaCompleta);
 }
 
 // Desenha a rota calculada no canvas
 function desenharRota(caminho) {
-  const canvas = document.getElementById('mapCanvas');
+  const canvas = document.getElementById('mapaCanvas');
   const ctx = canvas.getContext('2d');
   desenharMapa();
 
@@ -191,70 +343,3 @@ window.onload = () => {
   inicializarSelects();
   desenharMapa();
 };
-
-        distancias[origem] = 0;
-        pq.enfileirar({ vertice: origem, prioridade: 0 });
-
-        while (!pq.estaVazia()) {
-            const { vertice } = pq.desenfileirar();
-            if (vertice === destino) {
-                break;
-            }
-
-            for (let vizinho of this.grafo[vertice]) {
-                const novaDistancia = distancias[vertice] + vizinho.peso;
-                if (novaDistancia < distancias[vizinho.vertice]) {
-                    distancias[vizinho.vertice] = novaDistancia;
-                    prev[vizinho.vertice] = vertice;
-                    pq.enfileirar({ vertice: vizinho.vertice, prioridade: novaDistancia });
-                }
-            }
-        }
-
-        // Reconstrução do caminho mais curto
-        const caminho = [];
-        let atual = destino;
-        while (atual) {
-            caminho.unshift(atual);
-            atual = prev[atual];
-        }
-
-        return { caminho, distancia: distancias[destino] };
-    }
-}
-
-// Fila de Prioridade para gerenciar os vértices a serem explorados
-class PriorityQueue {
-    constructor() {
-        this.itens = [];
-    }
-
-    enfileirar(item) {
-        this.itens.push(item);
-        this.itens.sort((a, b) => a.prioridade - b.prioridade);
-    }
-
-    desenfileirar() {
-        return this.itens.shift();
-    }
-
-    estaVazia() {
-        return this.itens.length === 0;
-    }
-}
-
-// Exemplo de uso
-const grafo = new Grafo();
-grafo.adicionarAresta('A', 'B', 1);
-grafo.adicionarAresta('A', 'C', 4);
-grafo.adicionarAresta('B', 'C', 2);
-grafo.adicionarAresta('B', 'D', 5);
-grafo.adicionarAresta('C', 'D', 1);
-
-const origem = 'A';
-const destino = 'D';
-
-const resultado = grafo.dijkstra(origem, destino);
-
-console.log(Caminho mais curto de ${origem} a ${destino}: ${resultado.caminho.join(' -> ')});
-console.log(Distância: ${resultado.distancia});
