@@ -206,9 +206,7 @@ for (let x = 100; x <= 700; x += 100) {
     ctx.fillRect(565, 470, 25, 70);
     }
 
-    {
-      ctx.fillRect()
-    }
+    
      }
 
   // Desenhar ponto da distribuidora
