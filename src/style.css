@@ -92,17 +92,8 @@ select{
 }
 
 button {
-    border: solid 1px blue;
-    border-radius: 20px;
-    color: Blue;
-    background-color: white;
-    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s;
-}
-
-.button:hover {
-    background-color: blue;
-    color: white;
-    transform: scale(1.2)
+    width: 100%;
+    height: 100%
 }
 /* Mapa */
 
@@ -116,6 +107,19 @@ button {
   
 label, select, button {
     margin: 5px;
+}
+
+calcular {
+    background-color: var(--botao-azul);
+    border-radius: 5px;
+    padding: 1em;
+    color: var(--branco-principal);
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1em;
+    width: 550px;**
+
+    
 }
   
 canvas {
