@@ -1,11 +1,11 @@
 // Atualização das posições dos pontos para o novo tamanho do canvas
 const posicoes = {
   Distribuidora: { x: 100, y: 100 }, // Ponto principal destacado
-  Mercado1: { x: 150, y: 500 },
-  Mercado2: { x: 650, y: 400 },
-  Mercado3: { x: 700, y: 150 },
-  Mercado4: { x: 450, y: 100 },
-  Mercado5: { x: 300, y: 250 },
+  Mercado1: { x: 150, y: 505 },
+  Mercado2: { x: 650, y: 405 },
+  Mercado3: { x: 705, y: 150 },
+  Mercado4: { x: 450, y: 95 },
+  Mercado5: { x: 305, y: 250 },
   A: { x: 200, y: 100 },
   B: { x: 200, y: 200 },
   C: { x: 100, y: 200 },
@@ -32,6 +32,12 @@ const posicoes = {
   X: { x: 600, y: 300 },
   Y: { x: 600, y: 400 },
   Z: { x: 600, y: 500 },
+  A1: { x: 600, y: 100 },
+  B2: { x: 700, y: 100 },
+  C3: { x: 700, y: 200 },
+  D4: { x: 700, y: 300 },
+  E5: { x: 700, y: 400 },
+  F6: { x: 700, y: 500},
 
 };
 
@@ -39,29 +45,42 @@ const posicoes = {
 const grafo = {
   Distribuidora: { A: 5 },
   Mercado1: { J: 3 },
-  Mercado2: { },
-  Mercado3: {  },
-  Mercado4: { R: 3, V: 5 },
+  Mercado2: { Y: 3, E5: 3},
+  Mercado3: { B2: 3, C3: 3 },
+  Mercado4: { R: 3, V: 3 },
   Mercado5: { L: 3, M: 3 },
   A: { B: 5, N: 5 },
   B: { A: 5, C: 5, E: 5, M: 5 },
   C: { B: 5, D: 5 },
   D: { C: 5, G: 5, E: 5 },
-  E: { B: 5, F: 6, },
-  F: { B: 5, E: 5, G: 5, J: 5 },
+  E: { B: 5, F: 5, },
+  F: { B: 5, E: 5, G: 5, H: 5, J: 5 },
   G: { D: 5, F: 5 },
   H: { F: 5, I: 5 },
-  I: { J: 5, H: 5 },
+  I: { J: 5, H: 5, K: 5 },
   J: { I: 5, F: 5, Mercado1: 3},
   K: { I: 5, O: 5 },
   L: { E: 5, M: 5, P:5},
-  M: { B: 5, N: 4, Mercado5: 3},
+  M: { B: 5, N: 5, Mercado5: 3},
   N: { A: 5, M: 5, R: 5},
-  O: { H: 5, K: 5, S: 5},
+  O: { F: 5, H: 5, K: 5, S: 5},
   P: { L: 5, O: 5, T: 5},
   Q: { R: 5, U: 5},
   R: { Mercado4: 3, N: 5, Q: 5},
-  S: { O: 5, T: 5, Y: 5}
+  S: { O: 5, T: 5, Y: 5},
+  T: { P: 5, S: 5, U: 5},
+  U: { Q: 5, T: 5, W: 5},
+  V: { Mercado4: 3},
+  W: { U: 5, X: 5},
+  X: { W: 5, Y: 5},
+  Y: { S: 5, Z: 5, Mercado2: 3},
+  Z: { Y: 5, F6: 5},
+  A1: { V: 5, B2: 5 },
+  B2: { Mercado3: 3, A1: 5 },
+  C3: { Mercado3: 3, C3: 5 },
+  D4: { C3: 5, E5: 5 },
+  E5: { Mercado2: 3, D4: 5, F6: 5 },
+  F5: { Z: 5, E5: 5}
 };
 
 // Preenche os menus suspensos com os nós do grafo
@@ -119,8 +138,12 @@ for (let x = 100; x <= 700; x += 100) {
     // Mercados
     {
       ctx.fillStyle = "#00ff00";
-      ctx.fillRect(310, 210, 50, 80);
+      
       ctx.fillRect(110, 510, 80, 50);
+      ctx.fillRect(610, 410, 80, 50);
+      ctx.fillRect(410, 40, 80, 50);
+      ctx.fillRect(710, 110, 50, 80);
+      ctx.fillRect(310, 210, 50, 80);
     }
 
     // Parques
@@ -206,8 +229,58 @@ for (let x = 100; x <= 700; x += 100) {
     ctx.fillRect(565, 470, 25, 70);
     }
 
-    
-     }
+    {
+    ctx.fillRect(410, 310, 25, 50); // Bloco 7
+    ctx.fillRect(440, 310, 50, 30); 
+    ctx.fillRect(410, 370, 40, 20); 
+    ctx.fillRect(460, 350, 30, 40);
+    }
+
+    {
+    ctx.fillRect(510, 210, 20, 70); // Bloco 7
+    ctx.fillRect(540, 210, 50, 30); 
+    ctx.fillRect(510, 290, 30, 50); 
+    ctx.fillRect(570, 250, 20, 30);
+    ctx.fillRect(550, 290, 40, 40);
+    ctx.fillRect(560, 350, 30, 40);
+    ctx.fillRect(510, 350, 40, 40);
+    }
+
+    {
+    ctx.fillRect(595, 110, 35, 70); // Bloco 8
+    ctx.fillRect(640, 110, 50, 30); 
+    ctx.fillRect(610, 190, 30, 50); 
+    ctx.fillRect(670, 150, 20, 30);
+    ctx.fillRect(650, 190, 40, 40);
+    ctx.fillRect(660, 250, 30, 40);
+    ctx.fillRect(610, 250, 40, 40);
+    ctx.fillRect(610, 300, 50, 90);
+    ctx.fillRect(670, 300, 20, 40);
+    ctx.fillRect(670, 350, 20, 40);
+    }
+
+    {
+    ctx.fillRect(510, 70, 30, 20); // Bloco 9
+    ctx.fillRect(550, 60, 20, 30); 
+    ctx.fillRect(580, 70, 40, 20); 
+    ctx.fillRect(670, 50, 70, 40); 
+    ctx.fillRect(630, 70, 30, 20);
+    }
+
+    {
+      ctx.fillRect(710, 210, 30, 20); // Bloco 10
+      ctx.fillRect(710, 240, 20, 30); 
+      ctx.fillRect(710, 280, 40, 20); 
+      ctx.fillRect(710, 310, 30, 40); 
+      ctx.fillRect(710, 360, 20, 50);
+      ctx.fillRect(710, 420, 40, 50);
+      ctx.fillRect(710, 480, 20, 50);
+      ctx.fillRect(610, 510, 50, 30);
+      ctx.fillRect(670, 510, 20, 30);
+      ctx.fillRect(610, 470, 40, 20);
+      ctx.fillRect(660, 470, 30, 20);
+      }
+    }
 
   // Desenhar ponto da distribuidora
   ctx.fillStyle = "#ff0000";
