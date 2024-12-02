@@ -91,15 +91,15 @@ select{
     height: 100%;
 }
 
-#prev-button{
+button {
     border: solid 1px blue;
     border-radius: 20px;
-    color: blue;
+    color: Blue;
     background-color: white;
     transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s;
 }
 
-.botao:hover{
+.button:hover {
     background-color: blue;
     color: white;
     transform: scale(1.2)
