@@ -77,7 +77,7 @@ const grafo = {
   Z: { Y: 5, F6: 5},
   A1: { V: 5, B2: 5 },
   B2: { Mercado3: 3, A1: 5, C3: 5 },
-  C3: { Mercado3: 3, B: 5, D4: 5 },
+  C3: { Mercado3: 3, B2: 5, D4: 5 },
   D4: { C3: 5, E5: 5 },
   E5: { Mercado2: 3, Y: 5, D4: 5, F6: 5 },
   F6: { Z: 5, E5: 5}
