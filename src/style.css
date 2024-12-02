@@ -99,6 +99,11 @@ select{
     transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s;
 }
 
+.botao:hover{
+    background-color: blue;
+    color: white;
+    transform: scale(1.2)
+}
 /* Mapa */
 
 .Mapa {
