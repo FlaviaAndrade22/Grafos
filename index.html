@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/Slide.js" defer></script>
 </head>
 
 <!-- Parte do titulo -->
@@ -19,163 +20,49 @@
             </div>
         </div>
     </header>
-    <footer>
-		<ul>
-			<li>Autor: Dauâ, Felipe Sanches, Flavia, Guilherme de Lime</li>
-			<li>Teoria dos Grafos</li>
-			<li>Unifacvest Lages/SC</li>
-		</ul>
-	</footer>
-
     
 </body>
 
 
 <main>
     <!-- Slides -->
-    <div class="slide-interface">
-        <div class="slider">
-            <div class="slides">
-                <input type="radio" nome="radio-btn" id="radio1">
-                <input type="radio" nome="radio-btn" id="radio2">
-                <input type="radio" nome="radio-btn" id="radio3">
-                
-                <!-- imagens -->
-                <div class="slide first">
-                    <img src="img/cat_kitty meme.jpeg" alt="Image 1" />
-                </div>
-                <div class="slide">
-                    <img src="img/download.jpeg" alt="Image 2"/>
-                </div>
-                <div class="slide">
-                    <img src="img/Meme.jpeg" alt="Image 3" />
-                </div>
+    <div class="conteiner-slider">
+        <button id="prev-button"><img src="./public/images/arrow.png" alt="prev-button"></button>
+        <div class="conteiner-images">
 
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-                </div>
-            </div>
-            <div class="manual-navigation">
-                <label for="radio1" class="manual-btn"></label>
-                <label for="radio2" class="manual-btn"></label>
-                <label for="radio3" class="manual-btn"></label>
-            </div>
+            <img src="./public/images/download.jpeg" alt="Image" class="slider on"/>
+            <img src="./public/images/cat_kitty meme.jpeg" alt="Image" class="slider"/>
+            <img src="./public/images/Meme.jpeg" alt="Image" class="slider" />
+
         </div>
+        <button id="next-button"><img src="./public/images/arrow.png" alt="next-button"></button>
     </div>
 
     <!-- Mapa e opções -->
     <div class="mapa-interface">
         <div class="Opções"> <!-- Opções de rotas -->
-              <select id="ponto1"></select>
-              <select id="ponto2"></select>
-              <select id="ponto3"></select>
-              <select id="ponto4"></select>
+                <label for="ponto1">Ponto 1:</label>
+                <select id="ponto1"></select>
+
+                <label for="ponto2">Ponto 2:</label>
+                <select id="ponto2"></select>
+
+                <label for="ponto3">Ponto 3:</label>
+                <select id="ponto3"></select>
+
+                <label for="ponto4">Ponto 4:</label>
+                <select id="ponto4"></select>
+
         </div>
 
         <div class="Calcular"> <!-- Botão pra calcular a rota -->
-            <button onclick="CalcularRota()">Calcular Rota</button>
+            <button onclick="calcularRotaSelecionada()">Calcular Rota</button>
         </div>
     </div>
     <!-- Grafo -->
     <div class="Mapa">
         <canvas id="mapaCanvas" width="800" height="600"></canvas>
     </div>
-    
+    <script src="script.js"></script>
 </main>
 </html>
-O ChatGPT disse:
-ChatGPT
-Para melhorar esteticamente os botões no seu código, você pode estilizar a classe dos botões no arquivo CSS (style.css). Aqui está um exemplo de como você pode estilizar os botões:
-
-CSS para Estilizar os Botões
-Adicione este código ao seu arquivo style.css:
-
-css
-Copiar código
-/* Estilo base para todos os botões */
-button {
-    background-color: #4CAF50; /* Verde */
-    color: white; /* Cor do texto */
-    font-size: 16px; /* Tamanho do texto */
-    padding: 10px 20px; /* Espaçamento interno */
-    border: none; /* Remove as bordas */
-    border-radius: 5px; /* Arredondamento */
-    cursor: pointer; /* Cursor de mão ao passar */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-}
-
-/* Efeito ao passar o mouse */
-button:hover {
-    background-color: #45a049; /* Verde mais escuro */
-    transform: scale(1.05); /* Aumenta levemente o tamanho */
-}
-
-/* Efeito ao clicar */
-button:active {
-    transform: scale(0.95); /* Diminui levemente o tamanho */
-    background-color: #3e8e41; /* Verde ainda mais escuro */
-}
-
-/* Estilo específico para o botão "Calcular Rota" */
-.Calcular button {
-    font-weight: bold; /* Texto em negrito */
-    font-size: 18px; /* Texto maior */
-    padding: 12px 25px; /* Mais espaçamento interno */
-}
-Explicação
-Cor de fundo e texto: O botão tem uma cor verde suave que muda em hover e clique.
-Efeito de transição: Um efeito suave é aplicado quando o mouse passa ou ao clicar.
-Sombras: Um sombreamento discreto dá profundidade ao botão.
-Tamanho e arredondamento: O botão é maior, com bordas arredondadas para um design mais moderno.
-Especificidade: O botão "Calcular Rota" foi estilizado especificamente com um tamanho maior.
-Resultado Visual
-Botões terão um estilo profissional, moderno e interativo.
-O botão "Calcular Rota" se destacará devido ao tamanho e estilo.
-Se quiser ajustar as cores ou estilos, basta alterar os valores no CSS.
-
-
-
-
-
-
-Você disse:
-tire as legendas que estão /**/
-
-2/2
-
-O ChatGPT disse:
-ChatGPT
-Aqui está o CSS atualizado sem as legendas nos comentários:
-
-css
-Copiar código
-button {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.95);
-    background-color: #3e8e41;
-}
-
-.Calcular button {
-    font-weight: bold;
-    font-size: 18px;
-    padding: 12px 25px;
-}
