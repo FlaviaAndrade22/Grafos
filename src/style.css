@@ -41,9 +41,13 @@ header{
 }
 
 select{
+    font-size: 15px;
     margin: 20px;
     color: white;
-    background-color: rgb(5, 0, 29);
+    background-color: #626262;
+    border: transparent;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 /* Slides */
@@ -112,10 +116,17 @@ label, select, button {
     margin: 5px;
 }
 
-.Calcular{
-    border: 3px;
+.Calcular button{
+    font-size: 16px;
+    border: 5px transparent;
     border-radius: 10px;
+    padding: 5px;
+    color: white;
+    background-color: #626262;
+}
+.Calcular{
     
+    padding: 20px;
 }
   
 canvas {
