@@ -87,6 +87,7 @@ select{
 }
 #prev-button{
   max-width: 30px;
+    height: 30px:
   transform: rotate(180deg);
   transform-origin: left top 0;
 }
