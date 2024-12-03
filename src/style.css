@@ -114,20 +114,10 @@ label, select, button {
     width: 200px;
     height: auto;
     text-align: center;
-     margin-right: auto;
+    margin-right: 0 auto;
+    justify-content: center;
 
 }
-
-calcular {
-    background-color: var(--botao-azul);
-    border-radius: 5px;
-    padding: 1em;
-    color: var(--branco-principal);
-    display: block;
-    text-decoration: none;
-    margin-bottom: 1em;
-    width: 550px;**
-
     
 }
   
