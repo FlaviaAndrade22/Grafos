@@ -114,7 +114,8 @@ label, select, button {
     width: 200px;
     height: auto;
     text-align: center;
-    margin: auto;
+     margin-right: auto;
+
 }
 
 calcular {
