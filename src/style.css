@@ -87,9 +87,7 @@ select{
 }
 #prev-button{
   max-width: 200px;
-  width: 100%;
   transform: rotate(180deg);
-  transition-duration: 2s;
 }
 
 button {
@@ -117,8 +115,6 @@ label, select, button {
     text-align: center;
     justify-content: center;
     place-items: center;
-
-}
     
 }
   
