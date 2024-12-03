@@ -109,6 +109,12 @@ label, select, button {
     margin: 5px;
 }
 
+.Calcular{
+    font-size: large;
+    width: 200px;
+    height: auto;
+}
+
 calcular {
     background-color: var(--botao-azul);
     border-radius: 5px;
