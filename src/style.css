@@ -71,7 +71,7 @@ select{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 600px;
+    width: 850px;
 }
 
 .slider{
@@ -153,10 +153,10 @@ label {
 }
 
 canvas {
-    border: 3px solid #555;
+    
     border-radius: 15px;
     background-color: #f5f5f5;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 15px rgb(0, 0, 0);
     margin: 20px auto;
     display: block;
     width: 800px;
