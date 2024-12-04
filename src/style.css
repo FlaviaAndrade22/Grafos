@@ -35,6 +35,11 @@ header{
 }
 
 /* Opções */
+.Opções {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
 .topo-interface{
     padding: 40px 4%;
@@ -112,12 +117,27 @@ label, select, button {
     margin: 5px;
 }
 
+label {
+    margin-right: 0px;
+}
+
 .Calcular{
+    margin-top: 15px;
     border: 3px;
     border-radius: 10px;
-    
 }
   
+.Calcular button {
+    border: 1px dashed black;
+    border-radius: 80px;
+    padding: 8px 12px;
+}
+
+.Calcular button:hover {
+    cursor: pointer;
+    background-color: #d5d5f5;
+}
+
 canvas {
     border: 3px solid #555;
     border-radius: 15px;
@@ -130,4 +150,29 @@ canvas {
   }
   
   
+[id^="ponto"] {
+    padding: 4px 12px;
+    border: 1.5px solid white;
+    border-radius: 6px;
+    cursor: pointer;
 
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 17l5-5-5-5v10z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 24px;
+}
+
+
+select:hover{
+    background-color: rgb(25, 18, 52);
+}
+
+select:focus{
+    /* transition: transform 0.3s;
+    transform: rotate(90deg); /* Broken, must be image */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 10l5 5 5-5H7z"/></svg>');
+}
